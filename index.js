@@ -3,7 +3,7 @@ let counter = 0;
 document.querySelector(".btn-large").addEventListener("click", () => {
     if(counter<7){
     const newLi = document.createElement("li");
-    newLi.setAttribute("class", "single-task");
+    newLi.setAttribute("class", `single-task task${counter}`);
 
     const newInput = document.createElement("input");
     newInput.setAttribute("type", "text");
@@ -28,12 +28,21 @@ document.querySelector(".btn-large").addEventListener("click", () => {
     newA2.appendChild(newI2);
     newLi.appendChild(newA2);
 
-    const ul = document.querySelector("div.bottom-app-container ul");
+    const ul = document.querySelector("div.bottom-app-container > ul");
     ul.appendChild(newLi);
     counter++;
     }
-    console.log(counter);
 });
+
+document.querySelector("div.bottom-app-container > ul").addEventListener('click', (e) => {
+    if (e.target !== e.currentTarget && e.target.textContent == 'clear') {
+        const currentLi = e.target.parentNode.parentNode
+        currentLi.parentNode.removeChild(currentLi);
+        counter--;
+    }
+    e.stopPropagation;
+}); 
+
 
 
 
