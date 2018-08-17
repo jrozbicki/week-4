@@ -54,9 +54,9 @@ body {
   letter-spacing: 2px;
   font-weight: 700;
   padding-top: 20px;
-  position: relative;
   left: -120px;
   top: 20px;
+  
 }
 
 i.material-icons.left {
@@ -113,4 +113,8 @@ i.material-icons.left {
   width: 34px;
   height: 30px;
   transform: scale(0.8);
+}
+
+.strike-text{
+  text-decoration: line-through;
 }
