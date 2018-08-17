@@ -15,7 +15,7 @@ document.querySelector(".btn-large").addEventListener("click", () => {
     newA1.setAttribute("class", "waves-effect waves-light btn-small completeBtn");
 
     const newI1 = document.createElement("i");
-    newI1.setAttribute("class", "material-icons left");
+    newI1.setAttribute("class", "material-icons left strike");
     newI1.textContent = "check";
     newA1.appendChild(newI1);
     newLi.appendChild(newA1);
@@ -24,7 +24,7 @@ document.querySelector(".btn-large").addEventListener("click", () => {
     newA2.setAttribute("class", "waves-effect waves-light btn-small deleteBtn");
 
     const newI2 = document.createElement("i");
-    newI2.setAttribute("class", "material-icons left");
+    newI2.setAttribute("class", "material-icons left del");
     newI2.textContent = "clear";
     newA2.appendChild(newI2);
     newLi.appendChild(newA2);
@@ -36,8 +36,8 @@ document.querySelector(".btn-large").addEventListener("click", () => {
 });
 
 document.querySelector("div.bottom-app-container > ul").addEventListener('click', (e) => {
-    if (e.target !== e.currentTarget && e.target.textContent == 'clear') {
-        const currentLi = e.target.parentNode.parentNode
+    if (e.target.classList.contains('del')) {
+        const currentLi = e.target.parentNode.parentNode;
         currentLi.parentNode.removeChild(currentLi);
         counter--;
     }
@@ -45,14 +45,14 @@ document.querySelector("div.bottom-app-container > ul").addEventListener('click'
 }); 
 
 document.querySelector("div.bottom-app-container > ul").addEventListener("click", e => {
-    if (e.target !== e.currentTarget && e.target.textContent == "check") {
-        const currentLi = e.target.parentNode.parentNode;
-        if (currentLi.firstChild.style.textDecoration ==  "none"){
-            currentLi.firstChild.style.textDecoration = "line-through";
-        } else {
-            currentLi.firstChild.style.textDecoration = "none";
-        }
-        e.target.parentNode.classList.toggle('changeCompleteBtn');
+    if (e.target.classList.contains("strike")) {
+      const currentLi = e.target.parentNode.parentNode;
+      if (currentLi.firstChild.style.textDecoration == "none") {
+        currentLi.firstChild.style.textDecoration = "line-through";
+      } else {
+        currentLi.firstChild.style.textDecoration = "none";
+      }
+      e.target.parentNode.classList.toggle("changeCompleteBtn");
     }
     e.stopPropagation;
 }); 
